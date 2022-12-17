@@ -1,0 +1,235 @@
+#include <iostream>
+#include <fstream>
+#include <Windows.h>
+#include <string>
+
+#include <iostream>
+
+void outMassive(float array[26], char alphabet[26]) { //вывод массива только для англ яз (для 26 символов) где к коэффицент
+    for (int i = 0; i < 26; i++) {
+        std::cout << "% for " << alphabet[i] << " is " << array[i] << "\n";
+    }
+    std::cout << "\n\n\n";
+}
+
+void sort(float a[26], char alphabet[26]) { //сортировка от меньшего к большего
+    float middle, max = 0.00001;
+    short i, j, index;
+    char middleIndex;
+    for (i = 0; i < 26; i++) {
+        for (j = i; j < 26; j++) {
+            if (a[j] > max) {
+                max = a[j];
+                index = j;
+            }
+        }
+        middle = a[i];    //|
+        a[i] = max;       // } Меняем местами 1 значение массива на минимальное, Меняем местами 2 значение массива на минимальное и т д
+        a[index] = middle;//|
+        middleIndex = alphabet[i];      //|
+        alphabet[i] = alphabet[index];  // } Меняем местами 1 БУКВУ массива на минимальное, Меняем местами 2 БУКВУ массива на минимальное и т д
+        alphabet[index] = middleIndex;  //|
+        max = 0.00001;
+    }
+}
+
+char verify(char a, int displacement_factor ) {
+        if ((96 < a) and (a < 123))
+            if (a - displacement_factor > 96)
+                return char(a - displacement_factor);
+            else
+                return char(a - displacement_factor + 26);
+        else if ((64 < a) and (a < 91))
+            if (a - displacement_factor > 64)
+                return char(a - displacement_factor);
+            else
+                return char(a - displacement_factor + 26);
+}
+
+char verify(char a, int displacement_factor);
+void sort(float a[26], char alphabet[26]);
+void outMassive(float array[26], char alphabet[26]);
+
+int main()
+{
+    SetConsoleCP(1251); SetConsoleOutputCP(1251);
+    int n_(0), n(0);
+    char a;
+    std::string file("C:\\Users\\genyn\\Desktop\\КУРСОВАЯ\\Текста\\Sifu.txt");
+    std::fstream F;
+    F.open(file);//открываем файл в режиме чтения
+    if (F) //если открытие файла прошло корректно, то
+    {
+        //цикл для чтения значений из файла; выполнение цикла прервется,
+        //когда достигнем конца файла, в этом случае F.eof() вернет истину.
+        do {
+            F.get(a); //чтение очередного значения из потока F в переменную a
+            std::cout << a; //вывод значения переменной a на экран
+            switch (a) {
+            case 'e': simbols_array[4]++; n++; break;
+            case 't': simbols_array[19]++; n++; break;
+            case 'a': simbols_array[0]++; n++; break;
+            case 'i': simbols_array[8]++; n++; break;
+            case 'n': simbols_array[13]++; n++; break;
+            case 'o': simbols_array[14]++; n++; break;
+            case 's': simbols_array[18]++; n++; break;
+            case 'r': simbols_array[17]++; n++; break;
+            case 'l': simbols_array[11]++; n++; break;
+            case 'd': simbols_array[3]++; n++; break;
+            case 'h': simbols_array[7]++; n++; break;
+            case 'c': simbols_array[2]++; n++; break;
+            case 'u': simbols_array[20]++; n++; break;
+            case 'm': simbols_array[12]++; n++; break;
+            case 'f': simbols_array[5]++; n++; break;
+            case 'p': simbols_array[15]++; n++; break;
+            case 'y': simbols_array[24]++; n++; break;
+            case 'g': simbols_array[6]++; n++; break;
+            case 'w': simbols_array[22]++; n++; break;
+            case 'v': simbols_array[21]++; n++; break;
+            case 'b': simbols_array[1]++; n++; break;
+            case 'k': simbols_array[10]++; n++; break;
+            case 'x': simbols_array[23]++; n++; break;
+            case 'j': simbols_array[9]++; n++; break;
+            case 'q': simbols_array[16]++; n++; break;
+            case 'z': simbols_array[25]++; n++; break;
+            case 'T': simbols_array[19]++; n++; break;
+            case 'A': simbols_array[0]++; n++; break;
+            case 'I': simbols_array[8]++; n++; break;
+            case 'M': simbols_array[12]++; n++; break;
+            case 'F': simbols_array[5]++; n++; break;
+            case 'P': simbols_array[15]++; n++; break;
+            case 'W': simbols_array[22]++; n++; break;
+            case 'B': simbols_array[1]++; n++; break;
+            case 'D': simbols_array[3]++; n++; break;
+            case 'E': simbols_array[4]++; n++; break;
+            case 'G': simbols_array[6]++; n++; break;
+            case 'H': simbols_array[7]++; n++; break;
+            case 'J': simbols_array[9]++; n++; break;
+            case 'K': simbols_array[10]++; n++; break;
+            case 'L': simbols_array[11]++; n++; break;
+            case 'N': simbols_array[13]++; n++; break;
+            case 'Q': simbols_array[16]++; n++; break;
+            case 'R': simbols_array[17]++; n++; break;
+            case 'U': simbols_array[20]++; n++; break;
+            case 'V': simbols_array[21]++; n++; break;
+            case 'X': simbols_array[23]++; n++; break;
+            case 'Y': simbols_array[24]++; n++; break;
+            case 'Z': simbols_array[25]++; n++; break;
+            default: unknown_simbols++;
+            }
+            n_++; //счётчик считанных символов
+        } while (!F.eof());
+        F.close();//закрытие потока
+        std::cout << "\nNumber of letters = " << n << " Number of simbols = " << n_ << std::endl; //вовод на экран количества считанных символов
+    }
+    //если открытие файла прошло некорректно, то вывод
+    //сообщения об отсутствии такого файла
+    else std::cout << " Файл не существует" << std::endl;
+
+    for (int i = 0; i < 26; i++) {
+        char a(97 + i);
+        std::cout << a << " Встречается " << simbols_array[i] << "\tраз\n";
+        cipher_a[i] = float(simbols_array[i] * 100) / n;
+    }
+    std::cout << "Unknown simbols = " << unknown_simbols;
+
+    std::cout << "\n\n\n";
+
+    //outMassive(cipher_a, cipher_Alphabet);     //до
+    sort(cipher_a, cipher_Alphabet);           //сортировка для зашифрованного алфавита
+    outMassive(cipher_a, cipher_Alphabet);     //после
+
+    for (int i = 0; i < 26; i++) { //Предпологаемые значения замены букв с вычислением погрешности
+        std::cout << i << ")" << cipher_Alphabet[i] << " replace with " << uncipher_alphabet[i] << " measurement error (" << abs(cipher_a[i] - uncipher_a[i]) << ")\n";
+    }
+    
+    std::cout << "Введите номер строки которой вы доверяете: ";
+    int stroka;
+    std::cin >> stroka;
+    std::cout << "\n" << cipher_Alphabet[stroka] << int(cipher_Alphabet[stroka])
+        << uncipher_alphabet[stroka] << int(uncipher_alphabet[stroka]) << "\n\n";
+
+    int displacement_factor = uncipher_alphabet[stroka] - (cipher_Alphabet[stroka] + 32);
+    std::cout << "displacement_factor is " << displacement_factor << std::endl;
+
+    std::ofstream cipherFile("C:\\Users\\genyn\\Desktop\\КУРСОВАЯ\\Текста\\DE_CETHAR_FILE.txt");
+    std::fstream un_cipherFile;
+    un_cipherFile.open(file);
+
+    n_--;
+
+    if (un_cipherFile){
+        if (cipherFile.is_open()) {
+            char a;
+            for (int i = 0; i < n_; i++) {
+                    un_cipherFile.get(a);
+                    if (int(a) >= 0) {
+                        if (!isalpha(a)) std::cout << verify(a, displacement_factor); else std::cout << a;
+                        switch (a) {
+                        case 'e': cipherFile << verify(a, displacement_factor); break;
+                        case 't': cipherFile << verify(a, displacement_factor); break;
+                        case 'a': cipherFile << verify(a, displacement_factor); break;
+                        case 'i': cipherFile << verify(a, displacement_factor); break;
+                        case 'n': cipherFile << verify(a, displacement_factor); break;
+                        case 'o': cipherFile << verify(a, displacement_factor); break;
+                        case 's': cipherFile << verify(a, displacement_factor); break;
+                        case 'r': cipherFile << verify(a, displacement_factor); break;
+                        case 'l': cipherFile << verify(a, displacement_factor); break;
+                        case 'd': cipherFile << verify(a, displacement_factor); break;
+                        case 'h': cipherFile << verify(a, displacement_factor); break;
+                        case 'c': cipherFile << verify(a, displacement_factor); break;
+                        case 'u': cipherFile << verify(a, displacement_factor); break;
+                        case 'm': cipherFile << verify(a, displacement_factor); break;
+                        case 'f': cipherFile << verify(a, displacement_factor); break;
+                        case 'p': cipherFile << verify(a, displacement_factor); break;
+                        case 'y': cipherFile << verify(a, displacement_factor); break;
+                        case 'g': cipherFile << verify(a, displacement_factor); break;
+                        case 'w': cipherFile << verify(a, displacement_factor); break;
+                        case 'v': cipherFile << verify(a, displacement_factor); break;
+                        case 'b': cipherFile << verify(a, displacement_factor); break;
+                        case 'k': cipherFile << verify(a, displacement_factor); break;
+                        case 'x': cipherFile << verify(a, displacement_factor); break;
+                        case 'j': cipherFile << verify(a, displacement_factor); break;
+                        case 'q': cipherFile << verify(a, displacement_factor); break;
+                        case 'z': cipherFile << verify(a, displacement_factor); break;
+                        case 'T': cipherFile << verify(a, displacement_factor); break;
+                        case 'A': cipherFile << verify(a, displacement_factor); break;
+                        case 'I': cipherFile << verify(a, displacement_factor); break;
+                        case 'S': cipherFile << verify(a, displacement_factor); break;
+                        case 'O': cipherFile << verify(a, displacement_factor); break;
+                        case 'C': cipherFile << verify(a, displacement_factor); break;
+                        case 'M': cipherFile << verify(a, displacement_factor); break;
+                        case 'F': cipherFile << verify(a, displacement_factor); break;
+                        case 'P': cipherFile << verify(a, displacement_factor); break;
+                        case 'W': cipherFile << verify(a, displacement_factor); break;
+                        case 'B': cipherFile << verify(a, displacement_factor); break;
+                        case 'D': cipherFile << verify(a, displacement_factor); break;
+                        case 'E': cipherFile << verify(a, displacement_factor); break;
+                        case 'G': cipherFile << verify(a, displacement_factor); break;
+                        case 'H': cipherFile << verify(a, displacement_factor); break;
+                        case 'J': cipherFile << verify(a, displacement_factor); break;
+                        case 'K': cipherFile << verify(a, displacement_factor); break;
+                        case 'L': cipherFile << verify(a, displacement_factor); break;
+                        case 'N': cipherFile << verify(a, displacement_factor); break;
+                        case 'Q': cipherFile << verify(a, displacement_factor); break;
+                        case 'R': cipherFile << verify(a, displacement_factor); break;
+                        case 'U': cipherFile << verify(a, displacement_factor); break;
+                        case 'V': cipherFile << verify(a, displacement_factor); break;
+                        case 'X': cipherFile << verify(a, displacement_factor); break;
+                        case 'Y': cipherFile << verify(a, displacement_factor); break;
+                        case 'Z': cipherFile << verify(a, displacement_factor); break;
+                        default: cipherFile << a;
+                        }
+                    }
+            }
+            un_cipherFile.close();
+            cipherFile.close();
+            std::cout << std::endl << "...Complete..." << std::endl;
+        }
+        else std::cout << " Не удаётся создать файл для вывода зашифрованного текста";
+    }
+    else std::cout << " Файл, который необходимо зашифровать не найден..." << std::endl;
+
+    system("pause");
+    return 0;
+}
